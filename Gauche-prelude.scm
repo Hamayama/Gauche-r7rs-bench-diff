@@ -1,8 +1,9 @@
 (import (scheme base))
 (import (only (gauche base)
               add-load-path use current-load-path string-scan
-              keyword? print class-of
+              keyword? gauche-version print class-of
               ))
+(import (only (gauche version) version<=?))
 (add-load-path "." :relative)
 
 ;; for gcbench
@@ -15,12 +16,17 @@
 ;; for dynamic
 (define symbol?-orig symbol?)
 (define symbol?      symbol?)
+(define keyword?     keyword?)
 
 ;; for dynamic and gcbench
 (cond
  ((string-scan fpath "dynamic")
-  (set! symbol? (lambda (s) (or (keyword? s) (symbol?-orig s)))))
+  (unless (symbol? ':key1)
+    (set! symbol? (lambda (s) (or (keyword? s) (symbol?-orig s))))
+    (print "'symbol?' was redefined.")))
  ((string-scan fpath "gcbench")
-  (set! define-record-type srfi-9:define-record-type))
+  (when (version<=? (gauche-version) "0.9.4")
+    (set! define-record-type srfi-9:define-record-type)
+    (print "'define-record-type' was redefined.")))
  )
 

@@ -11,15 +11,23 @@
 
 ## 変更点
 1. dynamic の実行でエラーになる件  
+   
+   **◎本件は、Gauche の開発最新版では、環境変数 GAUCHE_KEYWORD_IS_SYMBOL を  
+   設定することで回避可能です。  
+   このため (symbol? ':key1) が #f になる場合のみ、以下の対策を行うように  
+   変更しました。(2016-7-30)**  
+   
    dynamic-parse-datum という手続きで、Gauche の キーワード型 (:key1 等) を  
    認識できずにエラーとなっていた。  
    対策として、Gauche-prelude.scm で symbol? を上書きして、  
-   キーワード型の場合も #t を返すようにした。  
-   
-   (Gauche の開発最新版では、環境変数 GAUCHE_KEYWORD_IS_SYMBOL を  
-   設定することでも回避可能。)
+   キーワード型の場合も #t を返すようにした。
 
 2. gcbench の実行でエラーになる件  
+   
+   **◎本件は、Gauche の開発最新版では、修正されています (コミット 0e8d4c7)。  
+   このため、Gauche のバージョンが 0.9.4 以下の場合のみ、以下の対策を行う  
+   ように変更しました。(2016-7-30)**  
+   
    トップレベルではなく 手続きの内部で、define-record-type を使用している  
    ところがあり、そこで以下のエラーが発生していた。  
    `*** ERROR: syntax-error: the form can appear only in the toplevel`  
@@ -53,7 +61,8 @@
    ```
 
 4. Gauche-postlude.scm の変更  
-   slib の scheme-implementation-version を、gauche.base の gauche-version に変更した。
+   slib の scheme-implementation-version 手続きを使うのをやめて、替わりに  
+   gauche.base の gauche-version 手続きを使うようにした。
 
 
 ## 実行方法
@@ -99,9 +108,14 @@
    make gauche
    ```
    (上記は、ベンチマークのファイル一式を c:\work\r7rs-benchmarks に展開した場合です)  
+   
    実行が完了するまでには、かなり時間がかかります。  
    完了すると、r7rs-benchmarks フォルダに results.Gauche というファイルができています。  
-   ここで、make csv を実行すると、all.csv という結果をまとめたファイルが生成されます。  
+   ここで、以下のコマンドを実行すると、all.csv という結果をまとめたファイルが生成されます。  
+   
+   ```
+   make csv
+   ```
    
    (注意)  
    results.Gauche には前回の結果が消されずに追記されていきます。  
@@ -110,12 +124,12 @@
    
    (注意)  
    Windows では ulimit -t でCPU時間を制限できないため、エラーメッセージが表示されます。  
-   (実行はそのまま継続されます)  
+   (実行は問題なく継続されます)  
    
    (注意)  
-   個別のベンチマークを実行する場合には、make gauche の替わりに  
+   個別のベンチマークを実行する場合には、上記の make gauche の替わりに  
    ./bench gauche tak  
-   のように入力してください。
+   のように入力してください (tak の部分にはベンチマークの名前を入れます)。
 
 
 ## 実行結果(参考)
@@ -145,6 +159,7 @@
 
 ## 履歴
 - 2016-7-29  v1.00 (初版)
+- 2016-7-30  v1.01 Gaucheのバージョンアップに対応
 
 
-(2016-7-29)
+(2016-7-30)
