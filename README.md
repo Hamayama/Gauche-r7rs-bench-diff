@@ -20,7 +20,8 @@
    dynamic-parse-datum という手続きで、Gauche の キーワード型 (:key1 等) を  
    認識できずにエラーとなっていた。  
    対策として、Gauche-prelude.scm で symbol? を上書きして、  
-   キーワード型の場合も #t を返すようにした。
+   キーワード型の場合も #t を返すようにした。  
+   (Gauche-prelude.scm は、各ベンチマークの先頭に付加されて実行されるファイル)
 
 2. gcbench の実行でエラーになる件  
    
@@ -37,7 +38,7 @@
    srfi-9-mod.scm という Gauche 用のモジュールにして、  
    Gauche-prelude.scm でそれを読み込んで使用するようにした。  
    
-   (このとき、R7RS ライブラリ化した srfi-9-lib.scm も作成してみたが、  
+   ( このとき、R7RS ライブラリ化した srfi-9-lib.scm も作成してみたが、  
    以下の同じエラーが発生した。  
    `*** ERROR: syntax-error: the form can appear only in the toplevel`  
    define-library だと何か仕組みが違うのか。。。)  
@@ -47,7 +48,7 @@
    こうすると、srfi-9-mod.scm を使う場合にくらべて 5 倍以上高速になるもよう。  
    (233(sec) → 35(sec))  
    しかし、ベンチマークプログラムの本体を変更するのはよくないと考えて、  
-   やはり srfi-9-mod.scm を使うようにした。)
+   やはり srfi-9-mod.scm を使うようにした)
 
 3. メモリ不足で実行できない件  
    array1 と mperm が、4GB の RAM では、うまく実行できなかった。  
@@ -62,7 +63,8 @@
 
 4. Gauche-postlude.scm の変更  
    slib の scheme-implementation-version 手続きを使うのをやめて、替わりに  
-   gauche.base の gauche-version 手続きを使うようにした。
+   gauche.base の gauche-version 手続きを使うようにした。  
+   (Gauche-postlude.scm は、各ベンチマークの末尾に付加されて実行されるファイル)
 
 
 ## 実行方法
@@ -142,7 +144,7 @@
   array1:1000000:500 → array1:100000:500 (メモリ不足のため)  
   mperm:20:10:2:1 → mperm:10:9:2:1 (メモリ不足のため)  
   
-  下記のページと比べると、全体的に2倍くらい遅くなっていますが、  
+- 下記のページと比べると、全体的に2倍くらい遅くなっていますが、  
   CPU, メモリ量, OS等の違いかと思います。  
   https://ecraven.github.io/r7rs-benchmarks/benchmark.html
 
