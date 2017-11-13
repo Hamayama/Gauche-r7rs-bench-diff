@@ -52,14 +52,15 @@
    やはり srfi-9-mod.scm を使うようにした)
 
 3. メモリ不足で実行できない件  
-   array1 と mperm が、4GB の RAM では、うまく実行できなかった。  
+   array1, mperm, paraffins が、4GB の RAM では、うまく実行できなかった。  
    (エラーにはならないが、PCが反応しない状態になった)  
-   対策として、inputs フォルダの array1.input と mperm.input を修正して、  
+   対策として、inputs フォルダの array1.input, mperm.input, paraffins.input を修正して、  
    使用メモリ量を減らした。  
    
    ```
    array1:1000000:500 → array1:100000:500
    mperm:20:10:2:1 → mperm:10:9:2:1
+   paraffins:23:10 → mperm:23:1
    ```
 
 4. Gauche-postlude.scm の変更  
@@ -90,7 +91,7 @@
    本サイトのファイルの Gauche-prelude.scm と Gauche-postlude.scm を、  
    R7RS Benchmarks の src フォルダに上書きコピーしてください。  
    
-   また、本サイトのファイルの array1.input と mperm.input を  
+   また、本サイトのファイルの array1.input, mperm.input, paraffins.input を  
    R7RS Benchmarks の inputs フォルダに上書きコピーしてください。  
    
    また、本サイトのファイルの srfi-9-mod.scm を、  
@@ -145,6 +146,7 @@
   環境 : MSYS2/MinGW-w64 (64bit)  
   array1:1000000:500 → array1:100000:500 (メモリ不足のため)  
   mperm:20:10:2:1 → mperm:10:9:2:1 (メモリ不足のため)  
+  paraffins:23:10 → paraffins:23:1 (メモリ不足のため)  
   
 - 下記のページと比べると、全体的に2倍くらい遅くなっていますが、  
   CPU, メモリ量, OS等の違いかと思います。  
@@ -157,6 +159,7 @@
 - 環境
   - MSYS2/MinGW-w64 (64bit/32bit)
 - 言語
+  - Gauche v0.9.6_pre4
   - Gauche v0.9.5
   - Gauche v0.9.4
 
@@ -164,6 +167,7 @@
 - 2016-7-29  v1.00 (初版)
 - 2016-7-30  v1.01 Gaucheのバージョンアップに対応
 - 2016-10-13 v1.02 README修正のみ(Gauche v0.9.5 対応)
+- 2017-11-13 v1.03 paraffins.inputを変更(メモリ不足対策)
 
 
-(2016-10-26)
+(2017-11-13)
