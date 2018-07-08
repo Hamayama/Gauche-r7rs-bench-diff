@@ -4,7 +4,6 @@
               keyword? gauche-version print class-of
               ))
 (import (only (gauche version) version<=?))
-(add-load-path "." :relative)
 
 ;; for gcbench
 (use srfi-9-mod :prefix srfi-9:)
@@ -13,12 +12,10 @@
 ;; get a script file path
 (define fpath (current-load-path))
 
-;; for dynamic
+;; for dynamic and gcbench
 (define symbol?-orig symbol?)
 (define symbol?      symbol?)
-(define keyword?     keyword?)
-
-;; for dynamic and gcbench
+(define define-record-type define-record-type)
 (cond
  ((string-scan fpath "dynamic")
   (unless (symbol? ':key1)

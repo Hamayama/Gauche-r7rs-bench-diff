@@ -81,11 +81,11 @@
    R7RS Benchmarks のページ  
    https://github.com/ecraven/r7rs-benchmarks  
    から、ベンチマークのファイル一式を、  
-   (Download Zip ボタン等で)ダウンロードして、適当なフォルダに展開してください。
+   (Download Zip ボタン等で) ダウンロードして、適当なフォルダに展開してください。
 
 3. 本サイトのファイルのダウンロード  
-   本サイト( https://github.com/Hamayama/Gauche-r7rs-bench-diff )のファイル一式を、  
-   (Download Zip ボタン等で)ダウンロードして、適当なフォルダに展開してください。
+   本サイト ( https://github.com/Hamayama/Gauche-r7rs-bench-diff ) のファイル一式を、  
+   (Download Zip ボタン等で) ダウンロードして、適当なフォルダに展開してください。
 
 4. ファイルのコピー  
    本サイトのファイルの Gauche-prelude.scm と Gauche-postlude.scm を、  
@@ -139,7 +139,6 @@
 
 ## 実行結果(参考)
 - 以下は、自分のPCで実行した結果です。  
-  Gauche の v0.9.5 と v0.9.4 で測定しました。  
   https://drive.google.com/open?id=126pkkpUMz8XQPopTDe3UJdJ4-yor9cu8WzpEBFM50LI  
   PC : Intel(R) Core(TM) i3-5005U CPU @ 2.00GHz with 4GB of RAM.  
   OS : Windows 8.1 (64bit)  
@@ -159,15 +158,17 @@
 - 環境
   - MSYS2/MinGW-w64 (64bit/32bit)
 - 言語
-  - Gauche v0.9.6_pre4
+  - Gauche v0.9.6
   - Gauche v0.9.5
   - Gauche v0.9.4
 
 ## 履歴
 - 2016-7-29  v1.00 (初版)
 - 2016-7-30  v1.01 Gaucheのバージョンアップに対応
-- 2016-10-13 v1.02 README修正のみ(Gauche v0.9.5 対応)
+- 2016-10-13 v1.02 README修正のみ(Gauche v0.9.5 で動作確認)
 - 2017-11-13 v1.03 paraffins.inputを変更(メモリ不足対策)
+- 2018-7-8   v1.04 Gauche-prelude.scm 見直し  
+  README修正(Gauche v0.9.6 で動作確認)
 
 
-(2017-11-13)
+(2018-7-8)
