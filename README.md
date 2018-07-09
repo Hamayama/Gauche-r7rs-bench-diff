@@ -139,7 +139,7 @@
 
 ## 実行結果(参考)
 - 以下は、自分のPCで実行した結果です。  
-  https://drive.google.com/open?id=126pkkpUMz8XQPopTDe3UJdJ4-yor9cu8WzpEBFM50LI  
+  https://drive.google.com/open?id=1Pg2CQukfBvC8a0baThT71br4vPyqiqRpK_dliJmY39I  
   PC : Intel(R) Core(TM) i3-5005U CPU @ 2.00GHz with 4GB of RAM.  
   OS : Windows 8.1 (64bit)  
   環境 : MSYS2/MinGW-w64 (64bit)  
@@ -169,6 +169,7 @@
 - 2017-11-13 v1.03 paraffins.inputを変更(メモリ不足対策)
 - 2018-7-8   v1.04 Gauche-prelude.scm 見直し  
   README修正(Gauche v0.9.6 で動作確認)
+- 2018-7-9   v1.05 Gauche-prelude.scm 見直し
 
 
-(2018-7-8)
+(2018-7-9)
